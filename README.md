@@ -10,5 +10,12 @@ Bootstrap 5
 JavaScript
 
 🚀 How to Use
+
 Clone this repository:
-git clone []
+-git clone [https://github.com/utpanna-pradhan/Dynamic-link-change.git]
+
+-cd [Dynamic-link-change]
+
+-Open in Live Server
+
+![Screenshot (473)](https://github.com/user-attachments/assets/a9d80284-849e-4925-bd20-3ad0e4cc6a25)
