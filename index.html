@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Meeting Link</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+        crossorigin="anonymous" />
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        .main {
+            max-width: 600px;
+            border-radius: 15px;
+            background-color: #ffffff;
+            padding: 20px;
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .left{
+            background-color: #e4dfdf;
+        }
+       .right{
+            background-color: #e4dfdf;
+            padding: 8px;
+            padding-bottom: 30px;
+        }
+        .left img {
+            border-radius: 50%;
+            margin-top: 15px;
+        }
+        .right label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input{
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body >
+    <h3 class="text-center pt-3 pb-3 mb-0">Add your Email to see your Meeting link</h3>
+    <div class="d-flex justify-content-center align-items-center vh-">
+        <div class="container">
+            <div class="d-flex flex-row border main">
+                <div class="left me-3">
+                    <img
+                        src="https://img.freepik.com/premium-vector/avatar-profile-icon-flat-style-female-user-profile-vector-illustration-isolated-background-women-profile-sign-business-concept_157943-38866.jpg?semt=ais_hybrid"
+                        alt="Profile Picture"
+                        width="150"
+                        height="150" />
+                </div>
+                <div class="right w-100">
+                    <label for="name">Your Name</label>
+                    <input type="text" class="form-control" />
+    
+                    <label for="designation">Designation</label>
+                    <input type="text" class="form-control" />
+    
+                    <label for="company">Company Name</label>
+                    <input type="text" class="form-control" />
+                    
+                  
+                   
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        oninput="updateMeetingLink()"
+                        placeholder="Enter your email"
+                        class="form-control" />
+                        <small class="text-muted text-center d-flex pt-2 pb-0">(for Reference you can enter abc4@gmail.com , xyz@gmail.com)</small>
+                       
+    
+                    <div class="meeting-container mt-0" id="meetingContainer" style="display: none;">
+                        <label for="meeting">📅 Your Meeting Link:</label>
+                        <a id="meetingLink" class="meeting-link d-block text-primary" href="#" target="_blank">Click Here</a>
+                    </div>
+                    <label for="company">Static Link1</label>
+                    <a href="#" class="text-primary ps-3 text-decoration-none">Static link1</a>
+                    <br>
+                    <label for="company ">Static Link2</label>
+                    <a href="#" class="text-primary text-decoration-none ps-3">Static link1</a>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+
+    <script>
+        function updateMeetingLink() {
+            const email = document.getElementById("email").value.trim().toLowerCase();
+            const meetingLinkElement = document.getElementById("meetingLink");
+            const meetingContainer = document.getElementById("meetingContainer");
+
+           
+            const meetingLinks = {
+                "abc4@gmail.com": "https://meet.google.com/abc4-meeting",
+                "xyz@gmail.com": "https://meet.google.com/xyz-meeting",
+                "default": "https://meet.google.com/default-meeting",
+            };
+
+           
+            const meetingLink = meetingLinks[email] || meetingLinks["default"];
+            meetingLinkElement.href = meetingLink;
+            meetingLinkElement.textContent = meetingLink;
+
+           
+            if (email) {
+                meetingContainer.style.display = "block";
+            } else {
+                meetingContainer.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
